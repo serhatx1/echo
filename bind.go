@@ -64,6 +64,8 @@ func (b *DefaultBinder) BindQueryParams(c Context, i interface{}) error {
 // which parses form data from BOTH URL and BODY if content type is not MIMEMultipartForm
 // See non-MIMEMultipartForm: https://golang.org/pkg/net/http/#Request.ParseForm
 // See MIMEMultipartForm: https://golang.org/pkg/net/http/#Request.ParseMultipartForm
+// specified target object based on the content type of the request.
+// Supports JSON, XML, and form data formats.
 func (b *DefaultBinder) BindBody(c Context, i interface{}) (err error) {
 	req := c.Request()
 	if req.ContentLength == 0 {
